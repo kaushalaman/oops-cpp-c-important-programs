@@ -1,3 +1,4 @@
+/* Moore's voting algorithm*/
 #include <iostream>
 using namespace std;
 
