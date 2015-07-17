@@ -223,7 +223,7 @@ int main(){
 		cout<<"11. reverse"<<endl;
 		cout<<"12: quit"<<endl;
 
-		cout<<"enter yur choice"<<endl;
+		cout<<"enter your choice"<<endl;
 		cin>>choice;
 
 		switch(choice){
@@ -270,7 +270,7 @@ int main(){
 				cin>>data;
 				cout<<"enter the position where to insert"<<endl;
 				cin>>pos;
-				start=addbefore(start,data,pos);
+				start=addatpos(start,data,pos);
 				break;
 			case 10:
 				cout<<"enter the element to be deleted"<<endl;
