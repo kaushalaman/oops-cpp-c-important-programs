@@ -17,6 +17,7 @@ void display(struct node *start){
 		cout<<p->info<<" ";
 		p=p->link;
 	}
+	cout<<endl;
 	return;
 }
 
