@@ -9,8 +9,20 @@ int exchange(int *a,int *b){
 }
 
 int selectionsort(int A[], int arr_size){
-	int smallest,index;
-	for(int i=0;i<arr_size-1;i++){
+	int i, smallest,index;
+	for(i=0;i<arr_size-1;i++){
+		if(A[i]<= A[i+1]){
+			if(i+1==arr_size-1){
+				return 1;
+			}
+			continue;
+		}
+		else{
+			break;
+		}
+		
+	}
+	for(i=0;i<arr_size-1;i++){
 		smallest=A[i];
 		for(int j=i+1;j<arr_size;j++){
 			if(smallest>A[j]){
@@ -22,10 +34,11 @@ int selectionsort(int A[], int arr_size){
 			exchange(&A[i],&A[index]);
 		}
 	}
+	return i+1;
 }
 
 void display(int A[],int arr_size){
-	cout<<"\n"<<"sorted list done"<<endl;
+	cout<<"\n"<<"sorted list"<<endl;
 	for(int i=0;i<=arr_size-1;i++){
 		cout<<A[i]<<" ";
 	}
@@ -38,11 +51,11 @@ int main(){
 	cout<<"enter array size"<<"\t";
 	cin>>arr_size;
 	int a[arr_size];
-	cout<<"enter elements of array by entering space"<<endl;
+	cout<<"enter elements of array by spacing space"<<endl;
 	for(int i=0;i<=arr_size-1;i++){
 		cin>>a[i];
 	}
-	selectionsort(a,arr_size);
+	cout<<"no of passes are "<<selectionsort(a,arr_size)<<endl;
 	display(a,arr_size);
 	return 0;
 }
