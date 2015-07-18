@@ -145,6 +145,40 @@ struct node *addatpos(struct node *start,int data,int pos){
 	return start;
 }
 
+struct node *insert_s(struct node *start,int data){
+	struct node *temp,*ptr,*p;
+	if(start==NULL){
+		temp=new node;
+		temp->info=data;
+		temp->link=start;
+		start=temp;
+		return start;
+	}
+
+	if(data <= start->info){
+		temp=new node;
+		temp->info=data;
+		temp->link=start;
+		start=temp;
+		return start;
+	}
+	p=start;ptr=start;
+	while(p!=NULL){
+		if(p->info<=data){
+			ptr=p;
+			p=p->link;
+			continue;
+		}
+		break;
+	}
+	temp=new node;
+	temp->info=data;
+	temp->link=ptr->link;
+	ptr->link=temp;
+	return start;
+
+}
+
 struct node *create_list(struct node *start){
 	start=NULL;
 	int n;
@@ -221,7 +255,8 @@ int main(){
 		cout<<"9. Add at position"<<endl;
 		cout<<"10. Delete"<<endl;
 		cout<<"11. reverse"<<endl;
-		cout<<"12: quit"<<endl;
+		cout<<"12. sorted insert data"<<endl;
+		cout<<"13: quit"<<endl;
 
 		cout<<"enter your choice"<<endl;
 		cin>>choice;
@@ -281,6 +316,11 @@ int main(){
 				start=reverse_list(start);
 				break;
 			case 12:
+				cout<<"insert data"<<endl;
+				cin>>data;
+				start=insert_s(start,data);
+				break;
+			case 13:
 				return 0;
 			default:
 				cout<<"Wrong choice"<<endl;
