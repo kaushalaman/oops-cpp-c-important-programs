@@ -38,7 +38,7 @@ int main(){
 	cout<<"enter array size"<<"\t";
 	cin>>arr_size;
 	int a[arr_size];
-	cout<<"enter elements of array by spacing space"<<endl;
+	cout<<"enter elements of array by entering space"<<endl;
 	for(int i=0;i<=arr_size-1;i++){
 		cin>>a[i];
 	}
