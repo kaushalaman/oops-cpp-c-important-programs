@@ -25,6 +25,32 @@ void display(struct node *last){
 	return;
 }
 
+struct node *reverse(struct node *last)
+{
+	if(last==NULL){
+		cout<<"list is empty"<<endl;
+		return last;
+	}
+	if(last->link==last){
+		return last;
+	}
+	struct node *p=last->link;
+	struct node *ptr,*prev,*next;
+	ptr=p;
+	ptr=p->link;
+	prev=p;
+	prev->link=last;
+	while(prev!=last){
+		next=ptr->link;
+		ptr->link=prev;
+		prev=ptr;
+		ptr=next;
+	}
+	last=p;
+	return last;
+
+}
+
 struct node *addatbegin(struct node *last,int data){
 	struct node *p,*temp;
 	temp=new node;
@@ -163,7 +189,8 @@ int main(){
 		cout<<"3. add after"<<endl;
 		cout<<"4. Delete"<<endl;
 		cout<<"5. create_list"<<endl;
-		cout<<"6: quit"<<endl;
+		cout<<"6: reverse"<<endl;
+		cout<<"7: quit"<<endl;
 
 		cout<<"enter your choice"<<endl;
 		cin>>choice;
@@ -197,8 +224,12 @@ int main(){
 			case 5:
 				last=create_list(last);
 				break;
-			
 			case 6:
+				last=reverse(last);
+				cout<<"reversed done!"<<endl;
+				break;
+			
+			case 7:
 				return 0;
 
 			default:
