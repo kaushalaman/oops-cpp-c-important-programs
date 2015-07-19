@@ -10,7 +10,7 @@ void display(struct node *start){
 	struct node *p;
 	p=start;
 	if(start == NULL){
-		cout<<"empty liist"<<endl;
+		cout<<"empty list"<<endl;
 		return;
 	}
 	while(p!=NULL){
@@ -199,6 +199,13 @@ struct node *create_list(struct node *start){
 	return start;
 }
 
+int exchange(int *a, int *b){
+	int temp;
+	temp=*a;
+	*a=*b;
+	*b=temp;
+}
+
 struct node *del(struct node *start,int data){
 	struct node *temp,*p;
 	p=start;
@@ -239,6 +246,23 @@ struct node *reverse_list(struct node *start){
 	start=prev;
 	return start;
 }
+
+struct node *selection_sort(struct node *start){
+	struct node *p,*q;
+	p=start;
+	while(p->link!=NULL){
+		q=p->link;
+		while(q!=NULL){
+			if(q->info<p->info){
+
+				exchange(&q->info,&p->info);
+			}
+			q=q->link;
+		}
+		p=p->link;
+	}
+	return start;
+}
 int main(){
 	struct node *start=NULL;
 	int choice,data,item,pos;
@@ -256,8 +280,8 @@ int main(){
 		cout<<"10. Delete"<<endl;
 		cout<<"11. reverse"<<endl;
 		cout<<"12. sorted insert data"<<endl;
-		cout<<"13: quit"<<endl;
-
+		cout<<"13: selection sort"<<endl;
+		cout<<"14. quit"<<endl;
 		cout<<"enter your choice"<<endl;
 		cin>>choice;
 
@@ -321,6 +345,11 @@ int main(){
 				start=insert_s(start,data);
 				break;
 			case 13:
+				cout<<"selection sort"<<endl;
+				start=selection_sort(start);
+				display(start);
+				break;
+			case 14:
 				return 0;
 			default:
 				cout<<"Wrong choice"<<endl;
