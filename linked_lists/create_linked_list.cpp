@@ -263,6 +263,39 @@ struct node *selection_sort(struct node *start){
 	}
 	return start;
 }
+
+struct node *bubble_sort(struct node *start){
+	struct node *p,*q;
+	int count=0;
+	int d;
+	int flag;
+	p=start;
+	while(p!=NULL){
+		p=p->link;
+		count++;
+	}
+	d=count;
+	cout<<"count:"<<count<<endl;
+	for(int i=1;i<d;i++){
+		p=start;
+		q=start->link;
+		flag=0;
+		for(int j=1;j<count && q!=NULL;j++){
+			if(p->info>q->info){
+				exchange(&p->info,&q->info);
+				display(start);
+				flag++;
+			}
+			p=p->link;
+			q=q->link;
+		}
+		if(flag==0){
+			break;
+		}
+		count--;
+	}
+	return start;
+}
 int main(){
 	struct node *start=NULL;
 	int choice,data,item,pos;
@@ -281,7 +314,8 @@ int main(){
 		cout<<"11. reverse"<<endl;
 		cout<<"12. sorted insert data"<<endl;
 		cout<<"13: selection sort"<<endl;
-		cout<<"14. quit"<<endl;
+		cout<<"14. bubble sort"<<endl;
+		cout<<"15. quit"<<endl;
 		cout<<"enter your choice"<<endl;
 		cin>>choice;
 
@@ -350,6 +384,11 @@ int main(){
 				display(start);
 				break;
 			case 14:
+				cout<<"bubble sort"<<endl;
+				start=bubble_sort(start);
+				display(start);
+				break;
+			case 15:
 				return 0;
 			default:
 				cout<<"Wrong choice"<<endl;
