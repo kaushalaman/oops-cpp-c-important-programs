@@ -14,7 +14,7 @@ public:
 		y=j;
 	}
 	complex operator+(complex);
-	void display(void);
+	friend void display(complex);
 
 };
 complex complex::operator+(complex c1){
@@ -25,8 +25,8 @@ complex complex::operator+(complex c1){
 	return complex(x+c1.x,y+c1.y);
 }
 
-void complex::display(void){
-	cout<<x<<" + i"<<y<<endl;
+void display(complex c){
+	cout<<c.x<<" + i"<<c.y<<endl;
 }
 
 int main(){
@@ -34,7 +34,7 @@ int main(){
 	complex d(2,3);
 	complex e;
 	e=c+d;
-	e.display();
+	display(e);
 	return 0;
 
 }
