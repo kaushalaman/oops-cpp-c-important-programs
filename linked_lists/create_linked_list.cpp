@@ -355,6 +355,26 @@ struct node *merge(struct node *start1,struct node *start2){
 	}
 	return start3;
 }
+
+struct node *concatenation(struct node *start1, struct node *start2)
+{
+	if(start1==NULL)
+	{
+		return start2;
+	}
+	if(start2==NULL)
+	{
+		return start1;
+	}
+	struct node *p;
+	p=start1;
+	while(p->link!=NULL)
+	{
+		p=p->link;
+	}
+	p->link=start2;
+	return start1;
+}
 int main(){
 	struct node *start=NULL;
 	int choice,data,item,pos;
@@ -375,7 +395,8 @@ int main(){
 		cout<<"13: selection sort"<<endl;
 		cout<<"14. bubble sort"<<endl;
 		cout<<"15: merge sort"<<endl;
-		cout<<"16. quit"<<endl;
+		cout<<"16. concatenation"<<endl;
+		cout<<"17. quit"<<endl;
 		cout<<"enter your choice"<<endl;
 		cin>>choice;
 
@@ -472,6 +493,22 @@ int main(){
 				display(start3);
 				break;
 			case 16:
+				cout<<"enter first list"<<endl;
+				start1=NULL;
+				start2=NULL;
+				cout<<"create first sorted list"<<endl;
+				start1=create_list(start1);
+				display(start1);
+				cout<<"create second sorted list"<<endl;
+				start2=create_list(start2);
+				display(start2);
+				cout<<endl;
+				cout<<"connecting"<<endl;
+				cout<<endl;
+				start1=concatenation(start1,start2);
+				display(start1);
+				break;
+			case 17:
 				return 0;
 			default:
 				cout<<"Wrong choice"<<endl;
