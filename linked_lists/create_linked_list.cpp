@@ -296,6 +296,64 @@ struct node *bubble_sort(struct node *start){
 	}
 	return start;
 }
+
+struct node *insert(struct node *start3,int data)
+{
+	struct node *temp;
+	temp=new node;
+	temp->info=data;
+	if(start3==NULL)
+	{
+		temp->link=start3;
+		start3=temp;
+		return start3;
+	}
+	struct node *p=start3;
+	while(p->link!=NULL){
+		p=p->link;
+	}
+	temp->link=p->link;
+	p->link=temp;
+	return start3;
+}
+struct node *merge(struct node *start1,struct node *start2){
+	struct node *start3;
+	start3=NULL;
+	struct node *p1,*p2;
+	p1=start1;
+	p2=start2;
+	while(p1!=NULL && p2!=NULL)
+	{
+		if(p1->info<p2->info)
+		{
+			start3=insert(start3,p1->info);
+			p1=p1->link;
+		}
+		else if(p1->info>p2->info)
+		{
+			start3=insert(start3,p2->info);
+			p2=p2->link;
+		}
+		else if(p1->info==p2->info)
+		{
+			start3=insert(start3,p1->info);
+			p1=p1->link;
+			p2=p2->link;
+		}
+
+	}
+	while(p1!=NULL)
+	{
+		start3=insert(start3,p1->info);
+		p1=p1->link;
+	}
+	while(p2!=NULL)
+	{
+		start3=insert(start3,p2->info);
+		p2=p2->link;
+	}
+	return start3;
+}
 int main(){
 	struct node *start=NULL;
 	int choice,data,item,pos;
@@ -315,7 +373,8 @@ int main(){
 		cout<<"12. sorted insert data"<<endl;
 		cout<<"13: selection sort"<<endl;
 		cout<<"14. bubble sort"<<endl;
-		cout<<"15. quit"<<endl;
+		cout<<"15: merge sort"<<endl;
+		cout<<"16. quit"<<endl;
 		cout<<"enter your choice"<<endl;
 		cin>>choice;
 
@@ -389,6 +448,28 @@ int main(){
 				display(start);
 				break;
 			case 15:
+				cout<<"Lets do merge sort"<<endl;
+				struct node *start1;
+				start1=NULL;
+				struct node *start2;
+				start2=NULL;
+				cout<<"create first sorted list"<<endl;
+				start1=create_list(start1);
+				start1=selection_sort(start1);
+				display(start1);
+				cout<<"create second sorted list"<<endl;
+				start2=create_list(start2);
+				start2=selection_sort(start2);
+				display(start2);
+				cout<<endl;
+				cout<<"Merging"<<endl;
+				cout<<endl;
+				struct node *start3;
+				start3=NULL;
+				start3=merge(start1,start2);
+				display(start3);
+				break;
+			case 16:
 				return 0;
 			default:
 				cout<<"Wrong choice"<<endl;
