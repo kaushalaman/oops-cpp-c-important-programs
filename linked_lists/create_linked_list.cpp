@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 using namespace std;
 
 struct node{
@@ -463,6 +464,7 @@ int main(){
 				display(start2);
 				cout<<endl;
 				cout<<"Merging"<<endl;
+				usleep(5*1000);
 				cout<<endl;
 				struct node *start3;
 				start3=NULL;
