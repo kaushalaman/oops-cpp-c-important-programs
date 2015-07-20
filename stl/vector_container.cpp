@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
 	vector<int> ss;
-	int choice,data,index;
+	int choice,data,i;
 	vector<int>::iterator it;
 	for(int j=0;j<=5;j++){
 		cout<<"enter your choice"<<endl;
@@ -26,13 +26,13 @@ int main()
 				cout<<"insert data"<<endl;
 				cin>>data;
 				cout<<"enter index"<<endl;
-				cin>>index;
-				ss.insert(ss.begin()+index,data);
+				cin>>i;
+				ss.insert(ss.begin()+i,data);
 				break;
 			case 4:
 				cout<<"erase item so give index"<<endl;
-				cin>>index;
-				ss.erase(ss.begin()+index);
+				cin>>i;
+				ss.erase(ss.begin()+i);
 				break;
 			case 5:
 				exit(1);
