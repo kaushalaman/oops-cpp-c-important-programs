@@ -8,6 +8,7 @@ struct node{
 	int info;
 	struct node *rchild;
 };
+
 void preorder(struct node *root)
 {
 	if(root==NULL)
@@ -15,7 +16,6 @@ void preorder(struct node *root)
 	cout<<root->info<<" ";
 	preorder(root->lchild);
 	preorder(root->rchild);
-
 }
 
 void postorder(struct node *root)
@@ -26,7 +26,6 @@ void postorder(struct node *root)
 	postorder(root->lchild);
 	postorder(root->rchild);
 	cout<<root->info<<" ";
-
 }
 
 void inorder(struct node *root)
@@ -37,7 +36,6 @@ void inorder(struct node *root)
 	inorder(root->lchild);
 	cout<<root->info<<" ";
 	inorder(root->rchild);
-
 }
 
 struct node *search(struct node *root,int dkey)
@@ -80,7 +78,6 @@ struct node *search(struct node *root,int dkey)
 		}
 
 	}
-
 }
 
 struct node *insert(struct node *root, int dkey)
@@ -350,4 +347,5 @@ int main()
 				cout<<"wrong choice"<<endl;
 		}
 	}
+	return 0;
 }
