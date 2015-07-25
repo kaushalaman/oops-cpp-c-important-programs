@@ -193,28 +193,65 @@ struct node *del(struct node *root, int dkey)
 	}
 }
 
+int min(struct node *root)
+{
+	if(root==NULL)
+	{
+		cout<<"tree is empty"<<endl;
+		return 0;
+	}
+	struct node *ptr=root;
+	int count=0;
+	while(ptr->lchild!=NULL)
+	{
+		ptr=ptr->lchild;
+		count++;
+	}
+	return ptr->info;
+}
+
+int max(struct node *root)
+{
+	if(root==NULL)
+	{
+		cout<<"tree is empty"<<endl;
+		return 0;
+	}
+	struct node *ptr=root;
+	int count=0;
+	while(ptr->rchild!=NULL)
+	{
+		ptr=ptr->rchild;
+		count++;
+	}
+	return ptr->info;
+}
+
+int height(struct node *root)
+{
+	int l_height,r_height;
+	if(root==NULL)
+	{
+		return 0;
+	}
+	else{
+		l_height=height(root->lchild);
+		r_height=height(root->rchild);
+		if(l_height>r_height)
+		{
+			return(l_height+1);
+		}
+		else{
+			return(r_height+1);
+		}
+	}
+
+}
+
 
 int main()
 {
 	struct node *root=NULL,*ptr;
-	/*struct node *node1=new node;
-	node1->info=10;
-	struct node *node2=new node;
-	node2->info=13;
-	struct node *node3=new node;
-	node3->info=9;
-	struct node *node4=new node;
-	node4->info=11;
-	root=new node;
-	if(!root)
-		return 0;
-	root->info=12;
-	root->lchild=node1;
-	root->rchild=node2;
-	node1->lchild=node3;
-	node1->rchild=node4;
-	cout<<root->rchild->info<<endl;*/
-
 	int choice,k;
 	
 	while(1)
@@ -227,10 +264,12 @@ int main()
 		cout<<"5. Inorder Traversal"<<endl;
 		cout<<"6. Postorder Traversal"<<endl;
 		cout<<"7. Height of tree"<<endl;
-		cout<<"find minimum and maximum"<<endl;
-		cout<<"Quit"<<endl;
+		cout<<"8: find minimum and maximum"<<endl;
+		cout<<"9: Quit"<<endl;
+
 		cout<<"Enter your choice"<<endl;
 		cin>>choice;
+
 		switch(choice)
 		{
 			case 1:
@@ -264,23 +303,16 @@ int main()
 				break;
 			case 6:
 				postorder(root);
-				break;
+				break;*/
 			case 7:
 				cout<<"height of the tree"<<endl;
 				cout<<height(root)<<endl;
 				break;
 			case 8:
-				ptr=min(root);
-				if(ptr!=NULL)
-				{
-					cout<<"minimum key is "<<ptr->info<<endl;
-				}
-				ptr=max(root);
-				if(ptr!=NULL)
-				{
-					cout<<"maximum key is "<<ptr->info<<endl;
-				}
-				break;*/
+				cout<<"Minimum key is "<<min(root)<<endl;
+				cout<<"Maximum key is "<<max(root)<<endl;
+				break;
+
 			case 9:
 				return 0;
 			default:
