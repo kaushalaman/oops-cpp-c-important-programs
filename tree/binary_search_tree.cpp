@@ -8,6 +8,37 @@ struct node{
 	int info;
 	struct node *rchild;
 };
+void preorder(struct node *root)
+{
+	if(root==NULL)
+		return;
+	cout<<root->info<<" ";
+	preorder(root->lchild);
+	preorder(root->rchild);
+
+}
+
+void postorder(struct node *root)
+{
+	if(root==NULL)
+		return;
+	
+	postorder(root->lchild);
+	postorder(root->rchild);
+	cout<<root->info<<" ";
+
+}
+
+void inorder(struct node *root)
+{
+	if(root==NULL)
+		return;
+	
+	inorder(root->lchild);
+	cout<<root->info<<" ";
+	inorder(root->rchild);
+
+}
 
 struct node *search(struct node *root,int dkey)
 {
@@ -295,7 +326,7 @@ int main()
 				cin>>k;
 				root=del(root,k);
 				break;
-			/*case 4:
+			case 4:
 				preorder(root);
 				break;
 			case 5:
@@ -303,7 +334,7 @@ int main()
 				break;
 			case 6:
 				postorder(root);
-				break;*/
+				break;
 			case 7:
 				cout<<"height of the tree"<<endl;
 				cout<<height(root)<<endl;
