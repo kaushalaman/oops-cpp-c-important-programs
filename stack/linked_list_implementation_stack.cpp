@@ -79,12 +79,12 @@ void size(struct stacknode *start)
 	}
 	cout<<count-1<<endl;
 }
-
 int main()
 {
 	struct stacknode *s=create_stack();
 	cout<<s->top<<" "<<s->data<<" "<<s->next<<endl;
-	s=push(s,1);
+	push(s,1);
+	display(s);
 	s=push(s,2);
 	s=push(s,3);
 	s=pop(s);

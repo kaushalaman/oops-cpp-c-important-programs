@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <cctype>
 #include <cstdlib>
 #include <cstdio>
@@ -34,6 +35,9 @@ int main()
 	else{
 		cout<<"not found"<<endl;
 	}
+	char g[100];
+	strcpy(g,"sklakdlnc");
+	cout<<g<<endl;
 	return 0;
 
 }

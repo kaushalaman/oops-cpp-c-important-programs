@@ -146,6 +146,25 @@ struct node *addatpos(struct node *start,int data,int pos){
 	return start;
 }
 
+struct node *rearrange(struct node *list)
+{
+  struct node *p, * q;
+  int temp;
+  if ((!list) || !list->link)
+      return list;
+  p = list;
+  q = list->link;
+  while(q)
+  {
+     temp = p->info;
+     p->info = q->info;
+     q->info = temp;
+     p = q->link;
+     q = p?p->link:0;
+  }
+  return list;
+}
+
 struct node *insert_s(struct node *start,int data){
 	struct node *temp,*ptr,*p;
 	if(start==NULL){
@@ -396,7 +415,8 @@ int main(){
 		cout<<"14. bubble sort"<<endl;
 		cout<<"15: merge sort"<<endl;
 		cout<<"16. concatenation"<<endl;
-		cout<<"17. quit"<<endl;
+		cout<<"17. rearrange list"<<endl;
+		cout<<"18. quit"<<endl;
 		cout<<"enter your choice"<<endl;
 		cin>>choice;
 
@@ -509,6 +529,11 @@ int main(){
 				display(start1);
 				break;
 			case 17:
+				cout<<"rearrange list"<<endl;
+				start=rearrange(start);
+				display(start);
+				break;
+			case 18:
 				return 0;
 			default:
 				cout<<"Wrong choice"<<endl;

@@ -43,7 +43,7 @@ public:
 		cout<<"multiplication is "<<c<<endl;
 	}
 };
-
+\
 int main(){
 	B b;
 	b.setab(2,4);
