@@ -63,6 +63,42 @@ void back_push(Node **head_ref,int data){
 	return;
 }
 
+void swap_pair(Node **head_ref)
+{
+	Node *ptr1=*head_ref;
+	Node *ptr2=ptr1->next;
+	while(ptr2!=NULL)
+	{
+		(ptr1->data)^=(ptr2->data)^=(ptr1->data)^=(ptr2->data);
+		if(ptr2->next!=NULL){
+			ptr1=ptr2->next;
+			ptr2=ptr1->next;
+		}
+		else{
+			return;
+		}
+
+	}
+}
+void print(Node *head_ref)
+{
+	if(head_ref == NULL) 
+	{
+		cout<<"nothing to display"<<endl;
+		return;
+	}
+	else
+	{
+		while(head_ref!=NULL)
+		{
+			cout<<head_ref->data<<" ";
+			head_ref=head_ref->next;
+		}
+		cout<<endl;
+	}
+}
+
+
 int main()
 {
 	Node *head=NULL;
@@ -70,8 +106,10 @@ int main()
 	back_push(&head,2);
 	back_push(&head,3);
 	back_push(&head,4);
-	front_push(&head,0);
+	back_push(&head,5);
 	reverse(head);
 	cout<<endl;
+	swap_pair(&head);
+	print(head);
 	return 0;
 }
