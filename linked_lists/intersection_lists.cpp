@@ -110,24 +110,53 @@ void print(Node *head_ref)
 	}
 }
 
+Node *intersect_list(Node *a, Node *b)
+{
+	Node *start=NULL;
+	while(a != NULL && b!=NULL)
+	{
+		if(a->data==b->data)
+		{
+			back_push(&start,a->data);
+			a=a->next;
+			b=b->next;
+		}
+		else if(a->data>b->data)
+		{
+			b=b->next;
+		}
+		else if(a->data<b->data)
+		{
+			a=a->next;
+		}
+	}
+	return start;
+}
+
 int main()
 {
 	Node *start1=NULL;
 	back_push(&start1,1);
 	back_push(&start1,2);
 	back_push(&start1,3);
-	back_push(&start1,2);
-	back_push(&start1,1);
+	back_push(&start1,5);
+	back_push(&start1,7);
+	back_push(&start1,8);
 	print(start1);
 	Node *ptr1=start1;
 	ptr1=start1->next;
 	ptr1=ptr1->next;
 	Node *start2=NULL;
+	back_push(&start2,2);
 	back_push(&start2,4);
-	back_push(&start2,0);
-	start2->next->next=ptr1;
+	back_push(&start2,5);
+	back_push(&start2,6);
+	back_push(&start2,8);
+	//start2->next->next=ptr1;
 	print(start2);
-	cout<<intersect(&start1,&start2)<<endl;
-	intersect_point(&start1,&start2);
+	//cout<<intersect(&start1,&start2)<<endl;
+	//intersect_point(&start1,&start2);
+	Node *ptr=intersect_list(start1,start2);
+	print(ptr);
 	return 0;
 }
