@@ -136,11 +136,40 @@ void node_delete(Node **head_ref,int val)
 	return;
 }
 
+void delete_pointer_node(Node *ptr)
+{
+	ptr->data=ptr->next->data;
+	Node *temp=ptr->next;
+	ptr->next=temp->next;
+	delete temp;
+}
+
+int getnth(Node *head_ref, int index)
+{
+	int count=0;
+	if(head_ref==NULL)
+	{
+		return 0;
+	}
+	while(head_ref!=NULL)
+	{
+		if(count==index){
+			cout<<head_ref->data<<endl;
+			return 0;
+		}
+		count++;
+		head_ref=head_ref->next;
+	}
+
+}
+
 int main()
 {
 	Node *head=NULL;
 	back_push(&head,1);
 	back_push(&head,2);
+	back_push(&head,3);
+	back_push(&head,4);
 	front_push(&head,0);
 	insert_after(head->next,1);
 	print(head);
@@ -149,5 +178,10 @@ int main()
 	cout<<getcount(head)<<endl;
 	cout<<search(head,2)<<endl;
 	cout<<search(head,3)<<endl;
+	getnth(head,0);
+	Node *ptr=head; 
+	cout<<ptr->next->next->next->data<<endl;
+	delete_pointer_node(ptr->next->next->next);
+	print(head);
 	return 0;
 }
