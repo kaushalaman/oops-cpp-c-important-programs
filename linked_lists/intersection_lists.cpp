@@ -6,7 +6,7 @@ using namespace std;
 struct node{
 	int data;
 	struct node *next;
-	bool visited;
+	bool visited = false;
 };
 
 typedef struct node Node;
@@ -60,7 +60,6 @@ int intersect_point(Node **start1,Node **start2)
 		ptr2=ptr2->next;
 	}
 	cout<<"no intersection"<<endl;
-
 }
 
 void front_push(Node **head_ref,int data)
