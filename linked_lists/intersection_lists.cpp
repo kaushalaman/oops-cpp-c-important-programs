@@ -22,6 +22,25 @@ Node *New(int val)
 	temp->next=NULL;
 	return temp;
 }
+
+void delete_alternate(Node **head_ref)
+{
+	Node *ptr1=*head_ref;
+	Node *ptr2=ptr1->next;
+	while(ptr2!=NULL)
+	{
+		ptr1->next=ptr2->next;
+		ptr1=ptr2->next;
+		delete ptr2;
+		if(ptr1!=NULL)
+		{
+		ptr2=ptr1->next;
+		}
+		else{
+			return;
+		}
+	}
+}
 bool intersect(Node **start1, Node **start2)
 {
 	Node *ptr1=*start1;
@@ -139,9 +158,8 @@ int main()
 	back_push(&start1,1);
 	back_push(&start1,2);
 	back_push(&start1,3);
-	back_push(&start1,5);
 	back_push(&start1,7);
-	back_push(&start1,8);
+
 	print(start1);
 	Node *ptr1=start1;
 	ptr1=start1->next;
@@ -158,5 +176,7 @@ int main()
 	//intersect_point(&start1,&start2);
 	Node *ptr=intersect_list(start1,start2);
 	print(ptr);
+	delete_alternate(&start1);
+	print(start1);
 	return 0;
 }
