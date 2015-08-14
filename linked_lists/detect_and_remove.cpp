@@ -37,7 +37,8 @@ void detect_remove(Node **head_ref)
 			return;
 		}
 	}
-}void front_push(Node **head_ref,int data)
+}
+void front_push(Node **head_ref,int data)
 {
 	Node *temp=New(data);
 	temp->next=*head_ref;

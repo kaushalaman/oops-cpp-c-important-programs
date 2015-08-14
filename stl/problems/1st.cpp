@@ -30,7 +30,7 @@ void push(struct node** head_ref, int new_data)
     (*head_ref)    = new_node;
 }
  
-/* Adds contents of two linked lists and return the head node of resultant list */
+
 struct node* addTwoLists (struct node* first, struct node* second)
 {
     struct node* res = NULL; // res is head node of the resultant list
@@ -39,11 +39,7 @@ struct node* addTwoLists (struct node* first, struct node* second)
  
     while (first != NULL || second != NULL) //while both lists exist
     {
-        // Calculate value of next digit in resultant list. 
-        // The next digit is sum of following things
-        // (i)  Carry
-        // (ii) Next digit of first list (if there is a next digit)
-        // (ii) Next digit of second list (if there is a next digit)
+        
         sum = carry + (first? first->data: 0) + (second? second->data: 0);
  
         // update carry for next calulation
